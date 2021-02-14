@@ -9,6 +9,16 @@ public class App {
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        draw();
+    }
+
+    public static void draw() {
+        System.out.println(
+        "\t" + " _    _" + "\n" +
+        "\t" + "(_\\__/(,_" + "\n" +
+        "\t" + "| \\ `_////-._" + "\n" +
+        "\t" + "J_/___\"=> __/`\\" + "\n" +
+        "\t" + "|=====;__/___./" + "\n" +
+        "\t" + "\'-\'-\'-\"\"\"\"\"\"\"`" );
     }
 }
