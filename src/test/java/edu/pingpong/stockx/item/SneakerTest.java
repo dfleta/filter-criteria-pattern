@@ -14,4 +14,12 @@ public class SneakerTest {
         assertEquals("555088-105", sneaker.getStyle());
         assertEquals("Jordan 1 Retro High Dark Mocha", sneaker.getName());
     }
+
+    @Test
+    public void addOffer() {
+        Sneaker sneaker = new Sneaker("555088-105", "Jordan 1 Retro High Dark Mocha");
+        Bid bid = new Bid("9.5", 282);
+        sneaker.add(bid);
+        assertEquals(1, 1);
+    }
 }
