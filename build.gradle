@@ -1,0 +1,42 @@
+
+plugins {
+    id 'java'
+    id 'application'
+    id 'jacoco'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+test {
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+}
+
+application {
+    // Define the main class for the application.
+    mainClassName = 'edu.pingpong.stockx.App'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class' : 'edu.pingpong.stockx.App',
+                   'Package-Title' : 'Filter-criteria-pattern',
+                   'Package-Version': '1.0',
+                   'Package-Vendor' : 'davidg@cifpfbmol.eu',
+                   'Specification-Title' : 'Examen Stockx'
+    }
+}
