@@ -1,10 +1,8 @@
 package edu.pingpong.stockx.criteria;
 
-import java.lang.StackWalker.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import edu.pingpong.stockx.item.Bid;
 import edu.pingpong.stockx.item.Item;
@@ -31,8 +29,11 @@ public class MaxBid implements Criteria {
                                         .filter(o -> o instanceof Bid)
                                         .max(Offer::compareTo);
         
-        List<Offer> maxList = new ArrayList<Offer>();
-        maxList.add(max.isPresent()? max.get() : null);
-        return maxList;        
+        if (max.isPresent()) {
+            return List.of(max.get());
+        } else {
+            return List.of();
+        }
+        // return List.of(max.isPresent()? max.get() : none );
     }
 }

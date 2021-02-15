@@ -2,6 +2,7 @@ package edu.pingpong.stockx.criteria;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.Test;
@@ -44,5 +45,15 @@ public class MaxBidTest {
         sneaker.setBid(maxOpt.isPresent()? maxOpt.get().value() : 0);
         assertEquals(900, sneaker.getBid());
     }
+
+    @Test
+    public void checkCriteria_no_bids_Test() {
+        Sneaker sneaker = new Sneaker("555088-105", "Jordan 1");
+        Criteria maxBid = new MaxBid();
+        List<Offer> maximum = maxBid.checkCriteria(sneaker);
+        sneaker.setBid(maximum.isEmpty()? 0 : maximum.get(0).value());
+        assertEquals(0, sneaker.getBid());
+    }
+    
     
 }
