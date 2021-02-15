@@ -28,11 +28,6 @@ public class MaxBid implements Criteria {
                                         .filter(o -> o instanceof Bid)
                                         .max(Offer::compareTo);
         
-        if (max.isPresent()) {
-            return List.of(max.get());
-        } else {
-            return List.of();
-        }
-        // return List.of(max.isPresent()? max.get() : new Offer("", 0));
+        return max.isPresent()? List.of(max.get()) : List.of();
     }
 }

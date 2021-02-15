@@ -17,11 +17,6 @@ public class MinAsk implements Criteria {
                                         .filter(o -> o instanceof Ask)
                                         .min(Offer::compareTo);
 
-        if (min.isPresent()) {
-            return List.of(min.get());
-        } else {
-            return List.of();
-        }
-        // return List.of(max.isPresent()? max.get() : new Offer("", 0));
+        return min.isPresent() ? List.of(min.get()) : List.of();
     }    
 }
