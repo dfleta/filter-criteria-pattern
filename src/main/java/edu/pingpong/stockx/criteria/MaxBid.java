@@ -1,6 +1,5 @@
 package edu.pingpong.stockx.criteria;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,6 +33,6 @@ public class MaxBid implements Criteria {
         } else {
             return List.of();
         }
-        // return List.of(max.isPresent()? max.get() : none );
+        // return List.of(max.isPresent()? max.get() : new Offer("", 0));
     }
 }

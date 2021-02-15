@@ -54,6 +54,4 @@ public class MaxBidTest {
         sneaker.setBid(maximum.isEmpty()? 0 : maximum.get(0).value());
         assertEquals(0, sneaker.getBid());
     }
-    
-    
 }

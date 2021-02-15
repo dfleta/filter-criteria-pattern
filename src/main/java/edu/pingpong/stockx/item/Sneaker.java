@@ -44,6 +44,10 @@ public class Sneaker implements Item {
         return this.ask;
     }
 
+    public void setAsk(int ask) {
+        this.ask = ask;
+    }
+
     @Override
     public void add(Offer offer) {
         this.offers.add(offer);
