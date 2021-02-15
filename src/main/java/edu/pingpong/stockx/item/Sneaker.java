@@ -35,6 +35,10 @@ public class Sneaker implements Item {
 		return this.bid;
 	}
 
+    public void setBid(int bid) {
+        this.bid = bid;
+    }
+
     @Override
     public int getAsk() {
         return this.ask;
@@ -54,7 +58,5 @@ public class Sneaker implements Item {
     public String toString() {
         return this.name + "\n \t \t" + this.style;
     }
-
-
     
 }

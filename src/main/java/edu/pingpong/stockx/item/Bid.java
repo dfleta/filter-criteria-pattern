@@ -3,7 +3,7 @@ package edu.pingpong.stockx.item;
 public class Bid implements Offer {
 
     private String size = "";
-    private int bid = 0;
+    private Integer bid = 0;
 
     public Bid(String size, int bid) {
         this.size = size;
@@ -17,7 +17,12 @@ public class Bid implements Offer {
 
     @Override
     public int value() {
-        return this.bid;
+        return this.bid.intValue();
+    }
+
+    @Override
+    public int compareTo(Offer bid) {
+        return this.bid.compareTo(bid.value());
     }
 
     @Override

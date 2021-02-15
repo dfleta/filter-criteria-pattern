@@ -11,6 +11,8 @@ public class Asks implements Criteria {
 
     @Override
     public List<Offer> checkCriteria(Item sneaker) {
-        return sneaker.offers().stream().filter(o -> o instanceof Ask).collect(Collectors.toList());
+        return sneaker.offers().stream()
+                                .filter(o -> o instanceof Ask)
+                                .collect(Collectors.toList());
     }    
 }
