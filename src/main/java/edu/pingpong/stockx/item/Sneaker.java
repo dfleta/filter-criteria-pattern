@@ -30,6 +30,10 @@ public class Sneaker implements Item {
         return this.sale;
     }
 
+    public void setSale(int sale) {
+        this.sale = sale;
+    }
+
     @Override
     public int getBid() {
 		return this.bid;
