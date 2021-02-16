@@ -152,14 +152,14 @@ public class App {
         // printar last sale
         // mostrar las bids sin esa
 
-        // sobresaliente: mostrar las listas ordenadas
+        // mostrar las listas ordenadas
         
         
     }
 
     public static String draw(Item sneaker) {
         return
-        "\n\t\t" + sneaker.getAsk() + " Buy\t" 
+        "\n\n\t\t" + sneaker.getAsk() + " Buy\t" 
         + sneaker.getBid() + " Sell \n" +  
 
         "\t\t" + " _    _" + "\n" +

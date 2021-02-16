@@ -1,24 +1,20 @@
 package edu.pingpong.stockx.criteria;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import edu.pingpong.stockx.item.Item;
 import edu.pingpong.stockx.item.Offer;
-import edu.pingpong.stockx.item.Sale;
 
 public class LastSale implements Criteria {
     
     @Override
     public List<Offer> checkCriteria(Item sneaker) {
-        
-        List<Offer> sales = sneaker.offers()
-                                    .stream()
-                                    .filter(o -> o instanceof Sale)
-                                    .collect(Collectors.toList());
 
-        return sales.isEmpty()? 
+        Criteria sales = new Sales();
+        List<Offer> salesList = sales.checkCriteria(sneaker);
+
+        return salesList.isEmpty()? 
                 List.of()
-                 : List.of(sales.get(sales.size() -1));
+                 : List.of(salesList.get(salesList.size() -1));
     }
 }
