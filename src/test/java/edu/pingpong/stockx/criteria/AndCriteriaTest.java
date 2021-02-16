@@ -24,7 +24,7 @@ public class AndCriteriaTest {
         sneaker.add(new Ask("13", 341));
         assertEquals(8, sneaker.offers().size());
 
-        Criteria size = new Size();
+        Criteria size = new Size("9.5");
         Criteria bids = new Bids();
 
         assertEquals(4, bids.checkCriteria(sneaker).size());

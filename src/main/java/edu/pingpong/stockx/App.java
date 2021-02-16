@@ -3,13 +3,18 @@ package edu.pingpong.stockx;
 
 import java.util.List;
 
+import edu.pingpong.stockx.criteria.AndCriteria;
 import edu.pingpong.stockx.criteria.Asks;
 import edu.pingpong.stockx.criteria.Bids;
 import edu.pingpong.stockx.criteria.Criteria;
 import edu.pingpong.stockx.criteria.LastSale;
 import edu.pingpong.stockx.criteria.MaxBid;
+import edu.pingpong.stockx.criteria.Max;
 import edu.pingpong.stockx.criteria.MinAsk;
+import edu.pingpong.stockx.criteria.Min;
 import edu.pingpong.stockx.criteria.Sales;
+import edu.pingpong.stockx.criteria.Size;
+import edu.pingpong.stockx.criteria.SizeMaxBid;
 import edu.pingpong.stockx.item.Ask;
 import edu.pingpong.stockx.item.Bid;
 import edu.pingpong.stockx.item.Item;
@@ -39,12 +44,12 @@ public class App {
          * en sus offers.
          */
 
-        Bid bid = new Bid("5.5", 550);
+        Bid bid = new Bid("13", 550);
         sneaker.add(bid);
         sneaker.add(new Bid("6", 200));
-        sneaker.add(new Bid("5.5", 479));
-        sneaker.add(new Bid("7", 338));
-        sneaker.add(new Bid("4.5", 480));
+        sneaker.add(new Bid("9.5", 479));
+        sneaker.add(new Bid("13", 338));
+        sneaker.add(new Bid("9.5", 480));
 
         /**
          * Crear asks
@@ -52,11 +57,12 @@ public class App {
          * en sus offers.
          */
 
-        Ask ask = new Ask("15", 288);
+        Ask ask = new Ask("13", 288);
         sneaker.add(ask);
-        sneaker.add(new Ask("13", 600));
-        sneaker.add(new Ask("13", 333));
-        sneaker.add(new Ask("14", 340));
+        sneaker.add(new Ask("6", 600));
+        sneaker.add(new Ask("9.5", 333));
+        sneaker.add(new Ask("9.5", 340));
+        sneaker.add(new Ask("13", 330));
 
         /**
          * Crear el filtro "Bids" que filtra
@@ -120,11 +126,12 @@ public class App {
          * a ultima.
          */
 
-        Sale sale = new Sale("10", 356);
+        Sale sale = new Sale("6", 356);
         sneaker.add(sale);
-        sneaker.add(new Sale("9", 352));
-        sneaker.add(new Sale("10", 404));
-        sneaker.add(new Sale("8", 372));
+        sneaker.add(new Sale("9.5", 352));
+        sneaker.add(new Sale("9.5", 404));
+        sneaker.add(new Sale("13", 360));
+        sneaker.add(new Sale("13", 372));
 
         /**
          * Crear el filtro "Sales" que filtra
@@ -139,7 +146,7 @@ public class App {
         /**
          * Crea un filtro que devuelva
          * la ULTIMA de las ventas (que 
-         * es la ultima en ser dada de alta
+         * es la ultima en ser incluida
          * en sneaker).
          */
         
@@ -149,8 +156,75 @@ public class App {
         sneaker.setSale(actualSale.isEmpty()? 0 : actualSale.get(0).value());
         System.out.println(App.draw(sneaker));
 
-        // printar last sale
-        // mostrar las bids sin esa
+        /**
+         * Mostrar info de la zapatilla 
+         * en la talla 9.5
+         * 
+         * Mostrar:
+         * - todas las ventas de la talla 9.5
+         * - ultima venta
+         * - minima ask
+         * - maxima bid
+         * 
+         * Es necesario crear un nuevo filtro
+         * "Size"
+         * y combinarlo con los filtros anteriores
+         * MinAsk, MaxBid y LastSale
+         */
+
+        /**
+         * Muestra las sales de la talla 9.5
+         * 
+         * Crea un filtro Size que devuelva las
+         * zapatillas de la talla indicada.
+         * 
+         * Crea un filtro AndCriteria() que haga
+         * un AND de los filtros Size y Sales.
+         */
+
+        System.out.println("\n\t\t SALES 9.5 US");
+        Criteria size = new Size("9.5");
+        sales = new Sales();
+        Criteria andSizeSales = new AndCriteria(size, sales);
+        andSizeSales.checkCriteria(sneaker).forEach(System.out::print);
+        // sneaker.setSale(sale);
+
+        /**
+         * Reutiliza el filtro AndCriteria 
+         * para mostrar las bids de la talla 9.5
+         */   
+
+        System.out.println("\n\t\t BIDS 9.5 US");
+        bids = new Bids();
+        Criteria andSizeBids = new AndCriteria(size, bids);
+        andSizeBids.checkCriteria(sneaker).forEach(System.out::print);
+
+        /**
+         * Crea un filtro Max
+         * que devuelva el maximo de las bids
+         * de una size
+         */
+
+        Criteria sizeMaxBid = new Max(size, bids);
+        List<Offer> sizeBid = sizeMaxBid.checkCriteria(sneaker);
+        sneaker.setBid(sizeBid.isEmpty()? 0 : sizeBid.get(0).value());
+        System.out.println("\n\t\t MAX BID 9.5 US: " + sneaker.getBid());
+
+        /**
+         * Crea un filtro Min
+         * que devuelva el minimo de las asks
+         * de una size
+         */
+
+        Criteria sizeMinAsk = new Min(size, asks);
+        List<Offer> sizeAsk = sizeMinAsk.checkCriteria(sneaker);
+        sneaker.setAsk(sizeAsk.isEmpty()? 0 : sizeAsk.get(0).value());
+        System.out.println("\n\t\t MIN ASK 9.5 US: " + sneaker.getAsk());
+
+
+        System.out.println(App.draw(sneaker));
+
+        
 
         // mostrar las listas ordenadas
         

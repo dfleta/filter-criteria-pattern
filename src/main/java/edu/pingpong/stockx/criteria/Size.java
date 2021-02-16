@@ -7,13 +7,19 @@ import edu.pingpong.stockx.item.Item;
 import edu.pingpong.stockx.item.Offer;
 
 public class Size implements Criteria {
+
+    private String size = "";
+
+    public Size(String size) {
+        this.size = size;
+    }
     
     @Override
     public List<Offer> checkCriteria(Item sneaker) {
         
         return sneaker.offers()
                         .stream()
-                        .filter(o -> o.size().equals("9.5"))
+                        .filter(o -> o.size().equals(size))
                         .collect(Collectors.toList());
     }
 }
