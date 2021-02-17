@@ -33,7 +33,7 @@ application {
 
 jar {
     manifest {
-        attributes 'Main-Class' : 'edu.pingpong.stockx.App',
+        attributes 'Main-Class' : 'edu.pingpong.stockx.Stockx',
                    'Package-Title' : 'Filter-criteria-pattern',
                    'Package-Version': '1.0',
                    'Package-Vendor' : 'davidg@cifpfbmol.eu',

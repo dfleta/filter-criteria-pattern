@@ -10,6 +10,6 @@ import static org.junit.Assert.*;
 public class StockxTest {
     @Test public void testAppHasADraw() {
         Sneaker sneaker = new Sneaker("555088-105", "Jordan 1 Retro High Dark Mocha");
-        assertNotNull("app should have a greeting", Stockx.draw(sneaker));
+        assertNotNull("app debe tener un draw", Stockx.draw(sneaker));
     }
 }
