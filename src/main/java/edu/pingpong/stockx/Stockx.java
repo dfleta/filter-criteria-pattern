@@ -14,7 +14,6 @@ import edu.pingpong.stockx.criteria.MinAsk;
 import edu.pingpong.stockx.criteria.Min;
 import edu.pingpong.stockx.criteria.Sales;
 import edu.pingpong.stockx.criteria.Size;
-import edu.pingpong.stockx.criteria.SizeMaxBid;
 import edu.pingpong.stockx.item.Ask;
 import edu.pingpong.stockx.item.Bid;
 import edu.pingpong.stockx.item.Item;
@@ -22,7 +21,7 @@ import edu.pingpong.stockx.item.Offer;
 import edu.pingpong.stockx.item.Sale;
 import edu.pingpong.stockx.item.Sneaker;
 
-public class App {
+public class Stockx {
 
     public static void main(String[] args) {
 
@@ -36,7 +35,7 @@ public class App {
          */
 
         Item sneaker = new Sneaker("555088-105", "Jordan 1 Retro High Dark Mocha");
-        System.out.println(App.draw(sneaker));
+        System.out.println(Stockx.draw(sneaker));
 
         /**
          * Crear bids
@@ -100,7 +99,7 @@ public class App {
         Criteria maxBid = new MaxBid();
         List<Offer> maximum = maxBid.checkCriteria(sneaker);
         sneaker.setBid(maximum.isEmpty()? 0 : maximum.get(0).value());
-        System.out.println(App.draw(sneaker));
+        System.out.println(Stockx.draw(sneaker));
 
         /**
          * Muestra la ask minima
@@ -118,7 +117,7 @@ public class App {
         Criteria minAsk = new MinAsk();
         List<Offer> minimum = minAsk.checkCriteria(sneaker);
         sneaker.setAsk(minimum.isEmpty()? 0 : minimum.get(0).value());
-        System.out.println(App.draw(sneaker));
+        System.out.println(Stockx.draw(sneaker));
 
         /**
          * Añade ventas (sales) de 
@@ -156,7 +155,7 @@ public class App {
         
         List<Offer> actualSale = lastSale.checkCriteria(sneaker);
         sneaker.setSale(actualSale.isEmpty()? 0 : actualSale.get(0).value());
-        System.out.println(App.draw(sneaker));
+        System.out.println(Stockx.draw(sneaker));
 
         /**
          * Mostrar info de la zapatilla 
@@ -197,7 +196,7 @@ public class App {
         andSizeBids.checkCriteria(sneaker).forEach(System.out::print);
 
         /**
-         * Crea un filtro Max
+         * Crea un filtro Max(size, bids)
          * que devuelva el maximo de las bids
          * de una talla.
          */
@@ -208,7 +207,7 @@ public class App {
         System.out.println("\n\t\t MAX BID 9.5 US: " + sneaker.getBid());
 
         /**
-         * Crea un filtro Min
+         * Crea un filtro Min(size, asks)
          * que devuelva el minimo de las asks
          * de una talla.
          */
@@ -226,9 +225,7 @@ public class App {
          * - maxima bid
          */
 
-        System.out.println(App.draw(sneaker));
-
-        
+        System.out.println(Stockx.draw(sneaker));   
 
         // mostrar las listas ordenadas
         

@@ -28,7 +28,7 @@ jacocoTestReport {
 
 application {
     // Define the main class for the application.
-    mainClassName = 'edu.pingpong.stockx.App'
+    mainClassName = 'edu.pingpong.stockx.Stockx'
 }
 
 jar {
