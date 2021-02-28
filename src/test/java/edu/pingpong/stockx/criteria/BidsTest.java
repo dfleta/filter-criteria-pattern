@@ -12,7 +12,7 @@ import edu.pingpong.stockx.item.Bid;
 import edu.pingpong.stockx.item.Offer;
 import edu.pingpong.stockx.item.Sneaker;
 
-public class BidsCompareTest {
+public class BidsTest {
 
     @Test
     public void checkCriteria_bids_Test() {
