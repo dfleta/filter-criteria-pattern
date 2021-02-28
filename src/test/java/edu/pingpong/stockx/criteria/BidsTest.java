@@ -1,6 +1,7 @@
 package edu.pingpong.stockx.criteria;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,8 +23,12 @@ public class BidsTest {
         sneaker.add(new Bid("5.5", 900));
         sneaker.add(new Bid("6", 472));
 
-        Criteria maxBid = new Bids();
-        Optional<Offer> maxOpt = Optional.ofNullable(maxBid.checkCriteria(sneaker).get(0));
+        Criteria bids = new Bids();
+
+        List<Offer> filteredBids = bids.checkCriteria(sneaker);
+        assertTrue(filteredBids.stream().allMatch(b -> b instanceof Bid));
+
+        Optional<Offer> maxOpt = Optional.ofNullable(bids.checkCriteria(sneaker).get(0));
         sneaker.setBid(maxOpt.isPresent()? maxOpt.get().value() : 0);
         assertEquals(900, sneaker.getBid());
     }
@@ -40,8 +45,11 @@ public class BidsTest {
         sneaker.add(new Ask("14", 1000));
         sneaker.add(new Ask("13", 341));
 
-        Criteria maxBid = new Bids();
-        Optional<Offer> maxOpt = Optional.ofNullable(maxBid.checkCriteria(sneaker).get(0));
+        Criteria bids = new Bids();
+        List<Offer> filteredBids = bids.checkCriteria(sneaker);
+        assertTrue(filteredBids.stream().allMatch(b -> b instanceof Bid));
+
+        Optional<Offer> maxOpt = Optional.ofNullable(bids.checkCriteria(sneaker).get(0));
         sneaker.setBid(maxOpt.isPresent()? maxOpt.get().value() : 0);
         assertEquals(900, sneaker.getBid());
     }
