@@ -25,7 +25,5 @@ public class Min implements Criteria {
                                     .min(Offer::compareTo);
         
         return offer.isPresent()? List.of(offer.get()) : List.of();
-    }
-
-    
+    }    
 }

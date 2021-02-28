@@ -26,5 +26,4 @@ public class Max implements Criteria {
         
         return offer.isPresent()? List.of(offer.get()) : List.of();
     }
-
 }
