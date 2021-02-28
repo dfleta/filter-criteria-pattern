@@ -11,17 +11,6 @@ public class MaxBid implements Criteria {
     
     @Override
     public List<Offer> checkCriteria(Item sneaker) {
-        /*
-        List<Offer> maxList = new ArrayList<Offer>();
-
-        Offer maxOffer = new Bid("", 0);
-        for (Offer actual: sneaker.offers()) {
-            if (actual instanceof Bid && actual.value() > maxOffer.value()){
-                maxOffer = actual;
-            }
-        }
-        maxList.add(maxOffer);  
-        return maxList; */
         
         Optional<Offer> max = sneaker.offers()
                                         .stream()

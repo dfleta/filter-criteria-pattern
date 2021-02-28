@@ -1,6 +1,7 @@
 package edu.pingpong.stockx.criteria;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import edu.pingpong.stockx.item.Sneaker;
 public class LastSaleTest {
 
     @Test
-    public void checkCriteriaTest() {
+    public void last_sale_test() {
         Sneaker sneaker = new Sneaker("555088-105", "Jordan 1");
         Sale sale = new Sale("10", 356);
         sneaker.add(sale);
@@ -24,5 +25,14 @@ public class LastSaleTest {
         Criteria lastSale = new LastSale();
         List<Offer> actualSale = lastSale.checkCriteria(sneaker);
         assertEquals(372, actualSale.get(0).value());
+    }
+
+    @Test
+    public void last_sale_null_test() {
+        Sneaker sneaker = new Sneaker("555088-105", "Jordan 1");
+
+        Criteria lastSale = new LastSale();
+        List<Offer> actualSale = lastSale.checkCriteria(sneaker);
+        assertTrue(actualSale.isEmpty());
     }
 }
