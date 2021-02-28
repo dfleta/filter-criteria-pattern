@@ -1,6 +1,7 @@
 package edu.pingpong.stockx.criteria;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -32,6 +33,10 @@ public class AndCriteriaTest {
 
         Criteria andSizeBids = new AndCriteria(size, bids);
         assertEquals(2, andSizeBids.checkCriteria(sneaker).size());
+        
+        assertTrue(andSizeBids.checkCriteria(sneaker).stream().allMatch(o -> o.size().equals("9.5")));
+        assertTrue(andSizeBids.checkCriteria(sneaker).stream().allMatch(o -> o instanceof Bid));
+
 
         // intercambiando filtros de posicion
         Criteria andBidsSize = new AndCriteria(bids, size);
