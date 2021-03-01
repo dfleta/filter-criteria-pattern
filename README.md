@@ -40,7 +40,7 @@ Intenta que la salida del programa por CLI sea lo más parecida posible a las im
 Sigue el diagrama de clase UML proporcionado para construir la aplicación.
 Si añades algún componente, dibújalo a mano alzada sobre el diagrama.
 
-!["Diagrama de clases UML"](./diagrama_clases_UML.jpg)
+!["Diagrama de clases UML"](./diagrama_clases_UML.png)
 
 
 ## Historias de usuario /casos de uso
