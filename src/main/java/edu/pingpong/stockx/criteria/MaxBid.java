@@ -16,7 +16,7 @@ public class MaxBid implements Criteria {
                                         .stream()
                                         .filter(o -> o instanceof Bid)
                                         .max(Offer::compareTo);
-        
+        // Effective java, Item 54: Return empty collections or arrays, not nulls
         return max.isPresent()? List.of(max.get()) : List.of();
     }
 }

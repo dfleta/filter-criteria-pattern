@@ -23,7 +23,7 @@ public class Max implements Criteria {
         Optional<Offer> offer = andCriteria.checkCriteria(sneaker)
                                     .stream()
                                     .max(Offer::compareTo);
-        
+        // Effective java, Item 54: Return empty collections or arrays, not nulls
         return offer.isPresent()? List.of(offer.get()) : List.of();
     }
 }

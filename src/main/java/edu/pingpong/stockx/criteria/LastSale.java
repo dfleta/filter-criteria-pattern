@@ -14,6 +14,7 @@ public class LastSale implements Criteria {
         List<Offer> salesList = sales.checkCriteria(sneaker);
 
         return salesList.isEmpty()? 
+                // Effective java, Item 54: Return empty collections or arrays, not nulls
                 List.of()
                  : List.of(salesList.get(salesList.size() -1));
     }

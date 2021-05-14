@@ -16,7 +16,7 @@ public class MinAsk implements Criteria {
                                         .stream()
                                         .filter(o -> o instanceof Ask)
                                         .min(Offer::compareTo);
-
+        // Effective java, Item 54: Return empty collections or arrays, not nulls
         return min.isPresent() ? List.of(min.get()) : List.of();
     }    
 }
