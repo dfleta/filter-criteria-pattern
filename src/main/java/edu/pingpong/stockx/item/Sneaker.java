@@ -30,6 +30,7 @@ public class Sneaker implements Item {
         return this.sale;
     }
 
+    @Override
     public void setSale(int sale) {
         this.sale = sale;
     }
@@ -39,6 +40,7 @@ public class Sneaker implements Item {
 		return this.bid;
 	}
 
+    @Override
     public void setBid(int bid) {
         this.bid = bid;
     }
@@ -48,6 +50,7 @@ public class Sneaker implements Item {
         return this.ask;
     }
 
+    @Override
     public void setAsk(int ask) {
         this.ask = ask;
     }
