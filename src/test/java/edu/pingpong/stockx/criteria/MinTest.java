@@ -27,10 +27,10 @@ public class MinTest {
         sneaker.add(new Ask("13", 341));
 
         Criteria size = new Size("13");
-        Criteria bids = new Asks();
-        Criteria max = new Min(size, bids);
+        Criteria asks = new Asks();
+        Criteria min = new Min(size, asks);
 
-        List<Offer> filteredSize = max.checkCriteria(sneaker);
+        List<Offer> filteredSize = min.checkCriteria(sneaker);
         assertTrue(filteredSize.stream().allMatch(o -> o.size().equals("13")));
         assertTrue(filteredSize.stream().allMatch(o -> o instanceof Ask));
         assertEquals(333, filteredSize.get(0).value());
@@ -43,9 +43,9 @@ public class MinTest {
 
         Criteria size = new Size("13");
         Criteria bids = new Bids();
-        Criteria max = new Min(size, bids);
+        Criteria min = new Min(size, bids);
 
-        List<Offer> filteredSize = max.checkCriteria(sneaker);
+        List<Offer> filteredSize = min.checkCriteria(sneaker);
         assertTrue(filteredSize.isEmpty());
     }    
 }
